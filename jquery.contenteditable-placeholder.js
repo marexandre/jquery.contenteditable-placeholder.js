@@ -21,6 +21,30 @@
             if( ! this.isEditable( $this.attr('contenteditable') ) ){ return; }
             if( ! this.hasPlaceHolder( $this.data('placeholder') ) ){ return; }
 
+            var $wrap = $(document.createElement('div'))
+                .addClass('content-wditable-wrap')
+                .css('position', 'relative');
+
+            var $placeholder = $( document.createElement('div') )
+                .addClass('placeholder')
+                .css({
+                    'position': 'absolute',
+                    'z-index' : 1,
+                    'top'     : parseInt( $this.css('padding-top') || 0, 10 ),
+                    'left'    : parseInt( $this.css('padding-left') || 0, 10) 
+                })
+                .on('click', function(e){
+                    e.preventDefault();
+                    $this.focus();    
+                });
+
+            $this
+                .on('keyup', function(){
+                    $this.text().length > 0 ? $placeholder.hide() : $placeholder.show();
+                })
+                .wrap( $wrap );
+
+            $this.before( $placeholder.text( $this.data('placeholder') ) );
         },
         /**
          * Check if $element is content editable
