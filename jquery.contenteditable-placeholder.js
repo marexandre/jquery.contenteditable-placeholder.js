@@ -2,7 +2,10 @@
     "use strict";
 
     var pluginName = "contentEditablePlaceholder",
-        defaults = {};
+        defaults = {
+            zIndex: 1,
+            margin: '0 4px'
+        };
 
     // constructor
     function Plugin ( element, options ) {
@@ -18,6 +21,7 @@
 
             var $this = $(this.element);
 
+            // don't do anything if element is not a content editable or has placeholder
             if( ! this.isEditable( $this.attr('contenteditable') ) ){ return; }
             if( ! this.hasPlaceHolder( $this.data('placeholder') ) ){ return; }
 
@@ -28,15 +32,29 @@
             var $placeholder = $( document.createElement('div') )
                 .addClass('placeholder')
                 .css({
-                    'position': 'absolute',
-                    'z-index' : 1,
-                    'top'     : parseInt( $this.css('padding-top') || 0, 10 ),
-                    'left'    : parseInt( $this.css('padding-left') || 0, 10) 
+                    'position'   : 'absolute',
+                    'z-index'    : this.settings.zIndex,
+                    'top'        : $this.css('padding-top'),
+                    'line-height': $this.css('line-height'),
+                    'margin'     : this.settings.margin
                 })
                 .on('click', function(e){
                     e.preventDefault();
                     $this.focus();    
                 });
+
+            // check if text direction is right ot left
+            if( $this.css('direction') === 'rtl' ){
+                $placeholder.css({
+                    'direction': 'rtl',
+                    'right'    : $this.css('padding-right')
+                });
+            }
+            else {
+                $placeholder.css({
+                    'left': $this.css('padding-left')
+                });
+            }
 
             $this
                 .on('keyup', function(){
