@@ -21,7 +21,6 @@
             if( ! this.isEditable( $this.attr('contenteditable') ) ){ return; }
             if( ! this.hasPlaceHolder( $this.data('placeholder') ) ){ return; }
 
-            console.log("xD");
         },
         /**
          * Check if $element is content editable
@@ -48,7 +47,6 @@
     // preventing against multiple instantiations
     $.fn[ pluginName ] = function ( options ) {
         return this.each(function(i) {
-            console.log( 'index :::: '+ i );
             if ( ! $.data( this, "plugin_" + pluginName ) ) {
                 $.data( this, "plugin_" + pluginName, new Plugin( this, options ) );
             }
