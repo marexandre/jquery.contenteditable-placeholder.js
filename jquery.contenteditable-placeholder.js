@@ -57,7 +57,7 @@
             }
 
             $this
-                .on('keyup', function(){
+                .on('keydown keyup', function(){
                     $this.text().length > 0 ? $placeholder.hide() : $placeholder.show();
                 })
                 .wrap( $wrap );
