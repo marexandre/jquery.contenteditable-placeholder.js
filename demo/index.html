@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Demo - jquery.contenteditable-placeholder.js</title>
+    <style>
+        html,
+        body {
+            font-size: 14px;
+            color: #222;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        #container {
+            width: 400px;
+            margin: 0 auto;
+        }
+        .input {
+            border: 1px solid #ddd;
+            padding: 3px 6px;
+            line-height: 24px;
+            border-radius: 3px;
+            outline: none;
+
+            margin-bottom: 20px;
+        }
+        .input:focus {
+            border-color: #888;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="container">
+        <h1>Demo</h1>
+        <div class="input" contenteditable="true" data-placeholder="Type your text here"></div>
+        <div class="input" contenteditable="true"></div>
+        <div class="input" contenteditable="false" data-placeholder="Type your text here"></div>
+        <div class="input" data-placeholder="Type your text here"></div>        
+        <div class="input" contenteditable data-placeholder="Type your text here"></div>        
+    </div>
+
+    
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="./js/jquery-1.10.2.min.js"><\/script>')</script>
+    <script src="../jquery.contenteditable-placeholder.js"></script>
+    <script>
+        $(function(){
+            $('.input').contentEditablePlaceholder();
+        });
+    </script>
+</body>
+</html>
