@@ -40,7 +40,7 @@
                 })
                 .on('click', function(e){
                     e.preventDefault();
-                    $this.focus();    
+                    $this.focus();
                 });
 
             // check if text direction is right ot left
