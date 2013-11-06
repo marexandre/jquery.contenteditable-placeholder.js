@@ -64,6 +64,13 @@
             }
 
             $this
+                .on('focus', function(){
+                    $placeholder.css({
+                        'top': $this.css('padding-top')
+                    });
+
+                    $this.text().length > 0 ? $placeholder.hide() : $placeholder.show();
+                })
                 .on('keydown keyup', function(){
                     $this.text().length > 0 ? $placeholder.hide() : $placeholder.show();
                 })
