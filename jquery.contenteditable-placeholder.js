@@ -1,3 +1,10 @@
+/**
+ * jquery.contentEditablePlaceholder.js 0.1.0
+ * Plugin for showing a place holder in content editable.
+ *
+ * alexandre.kirillov@gengo.com
+ * MIT license. http://opensource.org/licenses/MIT
+ */
 ;(function ( $, window, document, undefined ) {
     "use strict";
 
